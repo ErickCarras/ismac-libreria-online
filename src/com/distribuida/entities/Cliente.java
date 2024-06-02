@@ -2,6 +2,8 @@ package com.distribuida.entities;
 
 public class Cliente {
 
+	
+	// Git y Git Hub
 	// atributos
 
 	private int idCliente;

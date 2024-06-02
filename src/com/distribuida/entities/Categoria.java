@@ -8,6 +8,8 @@ public class Categoria {
 	
 	public Categoria() {}
 
+	
+	//Git y git hub
 	public Categoria(int idCategoria, String categoria, String descripcion) {
 		this.idCategoria = idCategoria;
 		this.categoria = categoria;
