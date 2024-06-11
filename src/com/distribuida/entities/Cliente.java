@@ -15,8 +15,6 @@ public class Cliente {
 	private String correo;
 	
 	
-	//Constructores
-	
 	public Cliente() {}
 
 
