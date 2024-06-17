@@ -28,27 +28,37 @@ public class ClienteDAOImpl implements ClienteDAO {
 	}
 
 	@Override
-	public Cliente finOne(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Cliente findOne(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Cliente.class, id);
 	}
 
 	@Override
+	@Transactional
 	public void add(Cliente cliente) {
 		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(cliente);
+		
 
 	}
 
 	@Override
+	@Transactional
 	public void up(Cliente cliente) {
 		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(cliente);
 
 	}
 
 	@Override
+	@Transactional
 	public void del(int id) {
 		// TODO Auto-generated method stub
-
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(findOne(id));
 	}
 
 }

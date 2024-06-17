@@ -8,7 +8,7 @@ public interface AutorDAO {
 	
 public List<Autor> findAll();
 
-public Autor finOne(int id);
+public Autor findOne(int id);
 
 public void add(Autor Autor);
 

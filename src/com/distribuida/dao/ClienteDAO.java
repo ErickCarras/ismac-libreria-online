@@ -10,7 +10,7 @@ public interface ClienteDAO {
 	
 	public List<Cliente> findAll();
 	
-	public Cliente finOne(int id);
+	public Cliente findOne(int id);
 	
 	public void add(Cliente cliente);
 	
