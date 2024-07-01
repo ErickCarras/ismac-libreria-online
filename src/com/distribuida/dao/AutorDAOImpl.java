@@ -4,10 +4,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.distribuida.entities.Autor;
-import com.distribuida.entities.Cliente;
 
 @Repository
 
@@ -23,7 +23,7 @@ public class AutorDAOImpl implements AutorDAO {
 	public List<Autor> findAll() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Autor", Autor.class).getResultList();
+		return session.createQuery("SELECT au FROM Autor au", Autor.class).getResultList();
 	}
 
 	@Override
@@ -31,7 +31,9 @@ public class AutorDAOImpl implements AutorDAO {
 	public Autor findOne(int id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Autor.class, id);
+		Query query = session.createQuery("SELECT au FROM Autor au WHERE au.idAutor =: keyIdAutor");
+		query.setParameter("keyIdAutor", id);
+		return (Autor) query.getSingleResult();
 	}
 
 	@Override
@@ -50,7 +52,20 @@ public class AutorDAOImpl implements AutorDAO {
 		// TODO Auto-generated method stub
 		
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(autor);
+		Query query = session.createQuery("UPDATE Autor au SET au.nombre =:keyNombre"
+				+" , au.apellido =: keyApellido"
+				+" , au.pais =: keyPais"
+				+" , au.direccion =: keyDireccion"
+				+" , au.telefono =: keyTelefono"
+				+" , au.correo =: keyCorreo"
+				+" WHERE au.idAutor =: keyIdAutor");
+		query.setParameter("keyNombre", autor.getNombre());
+		query.setParameter("keyApellido", autor.getApellido());
+		query.setParameter("keyPais", autor.getPais());
+		query.setParameter("keyDireccion", autor.getDireccion());
+		query.setParameter("keyTelefono", autor.getTelefono());
+		query.setParameter("keyCorreo", autor.getCorreo());
+		query.setParameter("keyIdAutor", autor.getIdAutor());
 
 
 	}
@@ -61,7 +76,9 @@ public class AutorDAOImpl implements AutorDAO {
 		// TODO Auto-generated method stub
 		
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(findOne(id));
+		Query query = session.createQuery("DELETE FROM Autor au WHERE au.idAutor =: keyIdAutor");
+		query.setParameter("keyIdAutor", id);
+		query.executeUpdate();
 
 	}
 

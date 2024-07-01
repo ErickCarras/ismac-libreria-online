@@ -13,28 +13,30 @@ public class PrincipalCliente {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-			ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+			ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext1.xml");
 			ClienteDAO clienteDAO = context.getBean("clienteDAOImpl", ClienteDAO.class);
 			
 			// CRUD
 			// add
-			Cliente cliente = new Cliente(0,"1723597854", "juan", "taipe", "av. por ahi y mas alla.", "0987452316", "jtaipe@correo.com");
+			Cliente cliente = new Cliente(0,"1759638659","juan","taipe","av. por ahi y mas alla.","099863253","jtaipe@correo.com");
 			clienteDAO.add(cliente);
 			
 			// up
-			Cliente cliente2 = new Cliente(1, "1723597852", "juan2", "taipe2", "av. por ahi y mas alla.2", "0987452312", "jtaipe2@correo.com");
+			Cliente cliente2 = new Cliente(40,"1759638652","juan2","taipe2","av. por ahi y mas alla.2","099863252","jtaipe2@correo.com");
 			clienteDAO.up(cliente2);
 			
 			// del
-			clienteDAO.del(1);
+			clienteDAO.del(40);
 			
 			// findOne
-			System.out.println("************ DEL **************** "+clienteDAO.findOne(1));
-	
+			//System.out.println("************ DEL **************** "+clienteDAO.findOne(39));
+			try {System.out.println("************ DEL **************** "+clienteDAO.findOne(40));} catch(Exception e) { e.printStackTrace();}
 			// find All
-		// clienteDAO.findAll().forEach(item -> { System.out.println(item.toString());  });
+		 clienteDAO.findAll().forEach(item -> { System.out.println(item.toString());  });
 		
-			context.close();
+		 
+		 
+		context.close();
 		
 
 		
