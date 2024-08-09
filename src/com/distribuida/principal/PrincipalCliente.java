@@ -18,19 +18,19 @@ public class PrincipalCliente {
 			
 			// CRUD
 			// add
-			Cliente cliente = new Cliente(0,"1759638659","juan","taipe","av. por ahi y mas alla.","099863253","jtaipe@correo.com");
-			clienteDAO.add(cliente);
+			//Cliente cliente = new Cliente(52,"1759638659","juan","taipe","av. por ahi y mas alla.","099863253","jtaipe@correo.com");
+			//clienteDAO.add(cliente);
 			
 			// up
-			Cliente cliente2 = new Cliente(40,"1759638652","juan2","taipe2","av. por ahi y mas alla.2","099863252","jtaipe2@correo.com");
-			clienteDAO.up(cliente2);
+			//Cliente cliente2 = new Cliente(51,"1759638652","juan3","taipe3","av. por ahi y mas alla.3","099863253","jtaipe3@correo.com");
+			//clienteDAO.up(cliente2);
 			
-			// del
-			clienteDAO.del(40);
+			 //del
+			clienteDAO.del(52);
 			
 			// findOne
 			//System.out.println("************ DEL **************** "+clienteDAO.findOne(39));
-			try {System.out.println("************ DEL **************** "+clienteDAO.findOne(40));} catch(Exception e) { e.printStackTrace();}
+			try {System.out.println("************ DEL **************** "+clienteDAO.findOne(52));} catch(Exception e) { e.printStackTrace();}
 			// find All
 		 clienteDAO.findAll().forEach(item -> { System.out.println(item.toString());  });
 		
